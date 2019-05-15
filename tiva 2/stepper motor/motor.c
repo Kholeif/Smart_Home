@@ -23,4 +23,35 @@ void _delay_ms(uint32_t y)
 	 DIO_WritePort (1,0x33,STD_LOW);
 	 Port_SetPinPullUp(5,0x11,1);
  }
+
+ void movestepperleft()
+ {
+	  DIO_WritePort(1,0x21,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x21,STD_LOW);
+	  DIO_WritePort(1,0x30,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x30,STD_LOW);
+	 DIO_WritePort(1,0x12,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x12,STD_LOW);
+	  DIO_WritePort(1,0x03,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x03,STD_LOW);
+ }
  
+  void movestepperright()
+ {
+	 DIO_WritePort(1,0x03,STD_HIGH);
+	 _delay_ms(20);
+	  DIO_WritePort(1,0x03,STD_LOW);
+	  DIO_WritePort(1,0x12,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x12,STD_LOW);
+	  DIO_WritePort(1,0x30,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x30,STD_LOW);
+	  DIO_WritePort(1,0x21,STD_HIGH);
+	 _delay_ms(20);
+	 DIO_WritePort(1,0x21,STD_LOW);
+ } 
