@@ -46,7 +46,26 @@ void UART_sendString(const uint8_t *Str)
 	}
 }
 
+void UART_receiveString(uint8_t *Str)
+{
+	uint8_t i = 0;
+	Str[i] = UART_receiveByte();
+	while(Str[i] != '#')
+	{
+		i++;
+		Str[i] = UART_receiveByte();
+	}
+	Str[i] = '\0';
 
+}
+
+uint8_t UART_receiveByte(void)
+{
+	
+	while(UART7_Available() != 1);
+	return (uint8_t)(UART5_DR_R&0xFF);
+	
+}
 
 uint8_t UART7_Available(void)
 {
